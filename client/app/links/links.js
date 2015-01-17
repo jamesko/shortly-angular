@@ -1,18 +1,15 @@
 angular.module('shortly.links', []) //['ui.bootstrap']
 
 .controller('LinksController', function ($scope, Links) {
-  // Your code here
 
-  $scope.data = {
-
-  };
-
+  $scope.data = {};
 
   $scope.getLinks = function(){
-    return "asdf";
+    Links.getLinks().then(function(val) {
+      $scope.data.links = val;
+    });
   };
-
-  //$scope.init(getLinks);
+  $scope.getLinks();
 
 });
 
