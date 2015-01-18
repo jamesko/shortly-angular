@@ -6,27 +6,28 @@ angular.module('shortly', [
   'ngRoute'
 ])
 .config(function($routeProvider, $httpProvider) {
-  $routeProvider
-    .when('/signin', {
-      templateUrl: 'app/auth/signin.html',
-      controller: 'AuthController'
-    })
-    .when('/signup', {
-      templateUrl: 'app/auth/signup.html',
-      controller: 'AuthController'
-    })
-    .when('/shorten', {
-      templateUrl: 'app/shorten/shorten.html',
-      controller: 'ShortenController'
-    })
-    .when('/links', {
-      templateUrl: 'app/links/links.html',
-      controller: 'LinksController'
-    });
+ $routeProvider
+   .when('/signin', {
+     templateUrl: 'app/auth/signin.html',
+     controller: 'AuthController'
+   })
+   .when('/signup', {
+     templateUrl: 'app/auth/signup.html',
+     controller: 'AuthController'
+   })
+   .when('/shorten', {
+     templateUrl: 'app/shorten/shorten.html',
+     controller: 'ShortenController'
+   })
+   .when('/links', {
+     templateUrl: 'app/links/links.html',
+     controller: 'LinksController'
+   })
+   .otherwise({redirectTo: '/'});
 
-    // We add our $httpInterceptor into the array
-    // of interceptors. Think of it like middleware for your ajax calls
-    $httpProvider.interceptors.push('AttachTokens');
+   // We add our $httpInterceptor into the array
+   // of interceptors. Think of it like middleware for your ajax calls
+   $httpProvider.interceptors.push('AttachTokens');
 })
 .factory('AttachTokens', function ($window) {
   // this is an $httpInterceptor

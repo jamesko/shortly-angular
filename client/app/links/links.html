@@ -1,5 +1,8 @@
 <div id='container' ng-controller='LinksController'>
-  <li ng-repeat="link in data">
-    {{link}}
+  <div class="menu">
+    <span><a href="#/shorten">Shorten a link</a></span>
+  </div>
+  <li ng-repeat="link in data.links">
+    <a href="{{link.url}}">url: {{link.url}}, code: {{link.code}}</a>
   </li>
 </div>
